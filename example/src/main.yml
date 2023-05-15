@@ -1,0 +1,6 @@
+- name: "Example"
+  hosts: localhost
+  gather_facts: yes
+  tasks:
+    - debug:
+        msg: "Simple Ansible automation running inside a container"

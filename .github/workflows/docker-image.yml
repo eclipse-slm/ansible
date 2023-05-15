@@ -1,0 +1,29 @@
+name: Docker Image
+
+env:
+  DOCKER_IMAGE_REPOSITORY: ghcr.io/eclipse-slm/ansible
+  DOCKER_IMAGE_TAG: 2.11.9
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Docker image
+      run: docker build . --file Dockerfile --tag ${{env.DOCKER_IMAGE_REPOSITORY}}:${{env.DOCKER_IMAGE_TAG}}
+    - name: Publish Docker image to registry
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        registry: ghcr.io
+        name: ${{env.DOCKER_IMAGE_REPOSITORY}}:${{env.DOCKER_IMAGE_TAG}}
+        username: ${{github.actor}}
+        password: ${{secrets.GITHUB_TOKEN}}
