@@ -2,7 +2,7 @@ name: Docker Image
 
 env:
   DOCKER_IMAGE_REPOSITORY: ghcr.io/eclipse-slm/ansible
-  DOCKER_IMAGE_TAG: 2.11.9
+  DOCKER_IMAGE_TAG: 2.17.2
 
 on:
   push:
