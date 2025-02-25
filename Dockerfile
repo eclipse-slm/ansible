@@ -17,6 +17,7 @@ RUN apt-get update \
        libyaml-dev \
        wget \
        sshpass \
+       openssh-client \
        git \
        nano \
        python3-jmespath \
